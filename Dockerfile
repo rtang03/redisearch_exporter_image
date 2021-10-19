@@ -25,4 +25,5 @@ ENV NAMESPACE=redisearch \
 
 COPY --from=builder /go/src/github.com/filipecosta90/redisearch_prometheus_exporter/redisearch_prometheus_exporter .
 
-CMD ["sh", "-c", "./redisearch_prometheus_exporter -connection-timeout 5s -namespace $NAMESPACE -redis.addr $ADDR"]
+ CMD ["sh", "-c", "./redisearch_prometheus_exporter --debug --redis.addr=$ADDR"]
+#CMD ["sh", "-c", "./redisearch_prometheus_exporter --debug"]
