@@ -8,13 +8,16 @@ services:
     container_name: redisearch-exporter
     image: redisearch_prometheus_exporter:latest
     environment:
-      - ADDR=redis01:6379
+      - REDISEARCH_ADDR=redis:6379
+      - REDISEARCH_EXPORTER_DEBUG=false
+      - REDISEARCH_EXPORTER_DISCOVER_WITH_SCAN=false
+      - REDISEARCH_EXPORTER_STATIC_INDEX_LIST=idx
     ports:
       - "9122:9122"
     networks:
       - openplatform
-  redis01:
-    container_name: redis01
+  redis:
+    container_name: redis
     image: redislabs/redisearch:2.0.12
     ports:
       - "6379:6379"
